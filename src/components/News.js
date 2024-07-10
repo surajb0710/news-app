@@ -12,9 +12,8 @@ export class News extends Component {
       totalResults: 0,
       loading: false,
     };
-    this.baseUrl =
-      "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=fd8cb7a3ad48491ba610ffe1ca7af717";
-    // this.baseUrl = props.pageUrl;
+    // this.baseUrl = `https://newsapi.org/v2/top-headlines?&country=${props.country}sources=techcrunch&apiKey=fd8cb7a3ad48491ba610ffe1ca7af717`;
+    this.baseUrl = `https://newsapi.org/v2/top-headlines?&country=${props.country}&category=${props.category}&apiKey=fd8cb7a3ad48491ba610ffe1ca7af717`;
   }
 
   async componentDidMount() {
@@ -78,6 +77,9 @@ export class News extends Component {
                       }
                       imgUrl={element.urlToImage}
                       newsUrl={element.url}
+                      author={element.author}
+                      date={element.publishedAt}
+                      source={element.source.name}
                     />
                   )}
                 </div>
